@@ -5,6 +5,7 @@ import axios from 'axios'
 
 const ChatBot = () => {
   const [messages, setMessages] = useState([]);
+  const CHATGPT_API_KEY = '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'
 
   const handleSend = async (newMessages = []) => {
     try {
@@ -12,6 +13,7 @@ const ChatBot = () => {
       setMessages(previousMessages => GiftedChat.append(previousMessages, userMessage))
 
       const messageText = userMessage.text.toLowerCase();
+console.log(messageText);
 
       const keywords = ['recipe', 'food', 'diet', 'fruit', 'vegetable']
       const newkeywords = ['hi', 'hello', 'namaste']
@@ -43,6 +45,20 @@ const ChatBot = () => {
         return;
       }
 
+      const response = await axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions',
+        {
+          prompt: `Get me a recipe for ${messageText}`,
+          max_tokens: 1200,
+          temperature: 0.2,
+          n: 1
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${CHATGPT_API_KEY}`
+          }
+        });
+      console.log(response.data);
 
       const recipe = response.data.choices[0].text.trim();
       const botMessage = {
