@@ -5,7 +5,6 @@ import axios from 'axios'
 
 const ChatBot = () => {
   const [messages, setMessages] = useState([]);
-  
 
   const handleSend = async (newMessages = []) => {
     try {
@@ -13,7 +12,6 @@ const ChatBot = () => {
       setMessages(previousMessages => GiftedChat.append(previousMessages, userMessage))
 
       const messageText = userMessage.text.toLowerCase();
-console.log(messageText);
 
       const keywords = ['recipe', 'food', 'diet', 'fruit', 'vegetable']
       const newkeywords = ['hi', 'hello', 'namaste']
@@ -54,8 +52,7 @@ console.log(messageText);
         },
         {
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${CHATGPT_API_KEY}`
+            
           }
         });
       console.log(response.data);
