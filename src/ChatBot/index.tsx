@@ -19,19 +19,19 @@ console.log(messageText);
       const newkeywords = ['hi', 'hello', 'namaste']
 
       if (!keywords.some(keywords => messageText.includes(keywords))) {
-        // if (newkeywords.some(text => messageText.includes(text))) {
-        //   const botMessage = {
-        //     _id: new Date().getTime() + 1,
-        //     text: "Hii I'm your food bot, how can i assist you ?",
-        //     createdAt: new Date(),
-        //     user: {
-        //       _id: 2,
-        //       name: "Food Bot"
-        //     }
-        //   };
-        //   setMessages(previousMessages => GiftedChat.append(previousMessages, botMessage))
-        //   return;
-        // }
+         if (newkeywords.some(text => messageText.includes(text))) {
+           const botMessage = {
+             _id: new Date().getTime() + 1,
+             text: "Hii I'm your food bot, how can i assist you ?",
+             createdAt: new Date(),
+             user: {
+               _id: 2,
+               name: "Food Bot"
+             }
+           };
+           setMessages(previousMessages => GiftedChat.append(previousMessages, botMessage))
+           return;
+         }
         const botMessage = {
           _id: new Date().getTime() + 1,
           text: "I'm your food bot, ask me anything related to food and recipe",
